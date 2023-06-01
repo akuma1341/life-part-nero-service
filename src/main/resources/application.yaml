@@ -1,0 +1,19 @@
+server:
+  servlet:
+    context-path: '/life-part-nero-default'
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/life_part_nero?currentSchema=life_part_nero
+    username: postgres
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  data:
+    rest:
+      base-path: '/api'

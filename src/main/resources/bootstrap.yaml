@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: life-part-nero
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      enabled: false
+info:
+  app:
+    name: LifePartNero service
+    version: 0.0.1
+    description: Main LifePartNero service
+health:
+  config:
+    enabled: false
