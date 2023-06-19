@@ -43,6 +43,7 @@ public class RepositoryRestConfig implements RepositoryRestConfigurer {
         module.addDeserializer(LocalDate.class, new JsonLocalDateDeserializer());
         module.addSerializer(LocalDateTime.class, new JsonLocalDateTimeSerializer());
         module.addDeserializer(LocalDateTime.class, new JsonLocalDateTimeDeserializer());
+        objectMapper.registerModule(module);
     }
 
     @Override

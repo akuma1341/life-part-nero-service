@@ -23,4 +23,10 @@ public class RecordServiceImpl implements RecordService {
                 .map(recordConverter::toDto)
                 .toList();
     }
+
+    @Override
+    public RecordDto create(RecordDto recordDto) {
+        var newRecord = recordRepository.save(recordConverter.toEntity(recordDto));
+        return recordConverter.toDto(newRecord);
+    }
 }

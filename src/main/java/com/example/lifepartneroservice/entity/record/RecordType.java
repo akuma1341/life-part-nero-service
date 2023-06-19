@@ -1,6 +1,6 @@
 package com.example.lifepartneroservice.entity.record;
 
-import com.example.lifepartneroservice.entity.converter.AbstractAttributeEnum;
+import com.example.lifepartneroservice.entity.AbstractAttributeEnum;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -14,7 +14,7 @@ public enum RecordType implements AbstractAttributeEnum {
     private final int code;
 
     @Override
-    public int getCode() {
+    public Integer getCode() {
         return code;
     }
 }

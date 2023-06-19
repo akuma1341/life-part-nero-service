@@ -20,13 +20,14 @@ public class RecordConverterImpl implements RecordConverter {
 
     @Override
     public RecordDto toDto(Record entity) {
-        return new RecordDto(entity.getId(), entity.getName());
+        return new RecordDto(entity.getId(), entity.getName(), entity.getRecordType());
     }
 
     private Record convertToEntity(long id, RecordDto dto) {
         return Record.builder()
                 .id(id)
                 .name(dto.name())
+                .recordType(dto.recordType())
                 .build();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.lifepartneroservice.entity.converter;
 
+import com.example.lifepartneroservice.entity.AbstractAttributeEnum;
 import jakarta.persistence.AttributeConverter;
 import lombok.RequiredArgsConstructor;
 

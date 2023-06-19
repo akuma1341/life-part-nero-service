@@ -32,6 +32,26 @@ CREATE TABLE records
 (
     rec_id            SERIAL PRIMARY KEY,
     rec_name          VARCHAR(50) NOT NULL,
+    rec_type          SMALLINT    NOT NULL,
     rec_date_added    TIMESTAMP DEFAULT NULL,
     rec_date_modified TIMESTAMP DEFAULT NULL
+);
+
+CREATE TABLE tags
+(
+    tag_id            SERIAL PRIMARY KEY,
+    tag_name          VARCHAR(50) NOT NULL,
+    tag_date_added    TIMESTAMP DEFAULT NULL,
+    tag_date_modified TIMESTAMP DEFAULT NULL
+);
+
+CREATE TABLE records_tags
+(
+    rt_rec_id INT NOT NULL,
+    rt_tag_id INT NOT NULL,
+    PRIMARY KEY (rt_rec_id, rt_tag_id),
+    FOREIGN KEY (rt_rec_id)
+        REFERENCES records (rec_id),
+    FOREIGN KEY (rt_tag_id)
+        REFERENCES tags (tag_id)
 );

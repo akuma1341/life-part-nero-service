@@ -1,4 +1,6 @@
 package com.example.lifepartneroservice.model.record;
 
-public record RecordDto(long id, String name) {
+import com.example.lifepartneroservice.entity.record.RecordType;
+
+public record RecordDto(long id, String name, RecordType recordType) {
 }

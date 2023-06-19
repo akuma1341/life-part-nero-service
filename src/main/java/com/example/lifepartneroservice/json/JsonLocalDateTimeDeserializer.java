@@ -14,11 +14,10 @@ public class JsonLocalDateTimeDeserializer extends JsonDeserializer<LocalDateTim
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-
     @Override
-    public LocalDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
-        var oc = p.getCodec();
-        TextNode node = oc.readTree(p);
+    public LocalDateTime deserialize(JsonParser parser, DeserializationContext context) throws IOException {
+        var objectCodec = parser.getCodec();
+        TextNode node = objectCodec.readTree(parser);
         var dateString = node.textValue();
         return LocalDateTime.parse(dateString);
     }

@@ -7,4 +7,6 @@ import java.util.List;
 public interface RecordService {
 
     List<RecordDto> getAllRecords();
+
+    RecordDto create(RecordDto recordDto);
 }

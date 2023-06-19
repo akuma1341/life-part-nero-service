@@ -5,6 +5,8 @@ import com.example.lifepartneroservice.service.record.RecordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.rest.webmvc.BasePathAwareController;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,5 +21,10 @@ public class RecordsController {
     @GetMapping("/allRecords")
     public List<RecordDto> getAllRecords() {
         return recordService.getAllRecords();
+    }
+
+    @PostMapping("/createRecord")
+    public RecordDto create(@RequestBody RecordDto record) {
+        return recordService.create(record);
     }
 }

@@ -5,6 +5,10 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -13,7 +17,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "records")
@@ -32,4 +36,13 @@ public class Record extends AbstractEntity {
 
     @Column(name = "rec_name")
     private String name;
+
+    @Column(name = "rec_type", columnDefinition = "SMALLINT")
+    private RecordType recordType;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "records_tags",
+            joinColumns = @JoinColumn(name = "rt_rec_id", referencedColumnName = "rec_id"),
+            inverseJoinColumns = @JoinColumn(name = "rt_tag_id", referencedColumnName = "tag_id"))
+    private Set<Tag> tags;
 }
