@@ -6,6 +6,7 @@ import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
@@ -32,10 +33,10 @@ import java.util.Set;
 @SuperBuilder
 public class Tag extends AbstractEntity {
 
-    @Column(name = "tag_name")
+    @Column(name = "tag_name", nullable = false, unique = true)
     private String name;
 
-    @ManyToMany(mappedBy = "tags")
+    @ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
     @JsonIgnore
     private Set<Record> records;
 

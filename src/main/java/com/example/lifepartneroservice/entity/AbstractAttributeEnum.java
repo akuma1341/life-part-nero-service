@@ -15,7 +15,8 @@ public interface AbstractAttributeEnum {
         return Arrays.stream(clazz.getEnumConstants())
                 .filter(it -> Objects.equals(it.getCode(), code))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(String.format(
+                .orElseThrow(
+                        () -> new IllegalArgumentException(String.format(
                         "Constant in %s with %s doesn't exist",
                         clazz.getSimpleName(), code)));
     }

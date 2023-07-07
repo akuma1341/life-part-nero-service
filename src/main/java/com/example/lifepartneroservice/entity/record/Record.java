@@ -3,12 +3,14 @@ package com.example.lifepartneroservice.entity.record;
 import com.example.lifepartneroservice.entity.AbstractEntity;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -34,11 +36,17 @@ import java.util.Set;
 @SuperBuilder
 public class Record extends AbstractEntity {
 
-    @Column(name = "rec_name")
+    @Column(name = "rec_name", nullable = false, unique = true)
     private String name;
+
+    @Column(name = "rec_text")
+    private String text;
 
     @Column(name = "rec_type", columnDefinition = "SMALLINT")
     private RecordType recordType;
+
+    @OneToOne(mappedBy = "record", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Link link;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "records_tags",

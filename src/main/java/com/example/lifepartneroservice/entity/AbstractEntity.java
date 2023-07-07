@@ -30,13 +30,13 @@ public abstract class AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "default_gen")
-    private Long id = 0L;
+    private Long id;
 
     @JsonIgnore
     @CreatedDate
-    private LocalDateTime dateAdded = LocalDateTime.now();
+    private LocalDateTime dateAdded;
 
     @JsonIgnore
     @LastModifiedDate
-    private LocalDateTime dateModified = null;
+    private LocalDateTime dateModified;
 }

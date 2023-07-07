@@ -17,5 +17,9 @@ public interface RecordBaseProjection extends BaseProjection {
 
     RecordType getRecordType();
 
+    String getText();
+
     Set<TagBaseProjection> getTags();
+
+    LinkChildrenOneDepthProjection getLink();
 }

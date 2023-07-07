@@ -2,11 +2,11 @@ package com.example.lifepartneroservice.service.record;
 
 import com.example.lifepartneroservice.model.record.RecordDto;
 
-import java.util.List;
+import java.util.Set;
 
 public interface RecordService {
 
-    List<RecordDto> getAllRecords();
-
     RecordDto create(RecordDto recordDto);
+
+    void associateWithRecords(Long recordId, Set<Long> otherRecordIds);
 }
